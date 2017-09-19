@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {getMetricsMetaInfo} from "../utils/helpers";
+import {Text, TouchableOpacity, View} from 'react-native';
+import {getMetricsMetaInfo, timeToString} from "../utils/helpers";
 import UdaciSlider from './UdaciSlider';
 import UdaciStepper from './UdaciStepper';
 import DateHeader from './DateHeader';
 
+
+function SubmitBtn({onPress}) {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+    >
+      <Text>Submit</Text>
+
+    </TouchableOpacity>
+  )
+}
 
 export default class AddEntry extends Component {
 
@@ -49,6 +60,23 @@ export default class AddEntry extends Component {
     })
   };
 
+  submit = () => {
+    const key = timeToString();
+    const entry = this.state;
+    this.setState({
+      run: 0,
+      bike: 0,
+      swim: 0,
+      sleep: 0,
+      eat: 0
+    })
+
+    // TODO Update Redux
+    // TODO Naviagte to home
+    // TODO Save to DB
+    // TODO Clear local information
+  }
+
   render() {
     const metaInfo = getMetricsMetaInfo();
     return (
@@ -76,8 +104,8 @@ export default class AddEntry extends Component {
               }
             </View>
           )
-
         })}
+        <SubmitBtn onPress={this.submit} />
       </View>
     )
   }
