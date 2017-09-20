@@ -1,3 +1,12 @@
+# Dev Hints
+
+Starting the Android SDK Device Emulator: 
+
+Run `C:\Users\[...]\AppData\Local\Android\sdk\emulator\emulator.exe -avd Nexus_5_API_23`
+
+# Original create-react-native README.md
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
