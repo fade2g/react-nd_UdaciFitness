@@ -117,3 +117,11 @@ export function getMetricsMetaInfo(metric) {
 
   return typeof metric === 'undefined' ? info : info[metric];
 }
+
+export function getDailyReminderValue() {
+  return {
+    today: ":wave: Don't forget to log your data today!"
+
+
+  }
+}
