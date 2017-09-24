@@ -6,6 +6,7 @@ import UdaciStepper from './UdaciStepper';
 import DateHeader from './DateHeader';
 import {Ionicons} from '@expo/vector-icons';
 import TextButton from './TextButton';
+import { submitEntry, removeEntry } from "../utils/api";
 
 function SubmitBtn({onPress}) {
   return (
@@ -70,13 +71,13 @@ export default class AddEntry extends Component {
       swim: 0,
       sleep: 0,
       eat: 0
-    })
+    });
 
     // TODO Update Redux
     // TODO Naviagte to home
-    // TODO Save to DB
+    submitEntry(entry, key);
     // TODO Clear local information
-  }
+  };
 
   reset = () => {
     const key = timeToString();
@@ -86,11 +87,11 @@ export default class AddEntry extends Component {
       swim: 0,
       sleep: 0,
       eat: 0
-    })
+    });
     // TODO Update Redux
     // TODO Naviagte to home
-    // TODO Save to DB
-  }
+    removeEntry(key); // from api.js
+  };
 
   render() {
     const metaInfo = getMetricsMetaInfo();
