@@ -8,11 +8,17 @@ import UdaciFitnessCalendar from 'udacifitness-calendar';
 import {white} from "../utils/colors";
 import DateHeader from "./DateHeader";
 import MetricCard from "./MetricCard";
+import {AppLoading} from 'expo';
 
 // import DateHeader from './dateHeader';
 
 
 class History extends Component {
+
+  state = {
+    ready: false
+  };
+
   componentDidMount() {
     const {dispatch} = this.props;
 
@@ -26,6 +32,9 @@ class History extends Component {
           }))
         }
       })
+      .then(() => {
+        this.setState(() => ({ready: true}))
+      })
   }
 
   renderItem = ({today, ...metrics}, formattedDate, key) => (
@@ -38,7 +47,7 @@ class History extends Component {
           </Text>
         </View>
         : <TouchableOpacity onPress={() => console.log('pressed')}>
-          <MetricCard metrics={metrics} date={formattedDate} />
+          <MetricCard metrics={metrics} date={formattedDate}/>
         </TouchableOpacity>
       }
     </View>);
@@ -47,7 +56,7 @@ class History extends Component {
   renderEmptyDate = (formattedDate) => {
     return (
       <View style={styles.item}>
-        <DateHeader date={formattedDate} />
+        <DateHeader date={formattedDate}/>
         <Text style={styles.noDataText}>
           You didn't log any data
         </Text>
@@ -57,6 +66,12 @@ class History extends Component {
 
   render() {
     const {entries} = this.props;
+    const {ready} = this.state;
+
+    if (!ready) {
+      return <AppLoading/>
+    }
+
     return (
       <UdaciFitnessCalendar
         items={entries}
@@ -87,7 +102,7 @@ const styles = StyleSheet.create({
   noDataText: {
     fontSize: 20,
     paddingTop: 20,
-    paddingBottom:20
+    paddingBottom: 20
   }
 });
 
