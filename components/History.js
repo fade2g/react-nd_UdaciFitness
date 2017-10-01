@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Platform, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {receiveEntries, addEntry} from "../actions/index";
 import {getDailyReminderValue, timeToString} from "../utils/helpers";
-import {fetchCalendatResults} from "../utils/api";
+import {fetchCalendarResults} from "../utils/api";
 import UdaciFitnessCalendar from 'udacifitness-calendar';
 import {white} from "../utils/colors";
 import DateHeader from "./DateHeader";
@@ -22,8 +22,8 @@ class History extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
 
-    fetchCalendatResults()
-      .then(entries => dispatch(receiveEntries(entries)))
+    fetchCalendarResults()
+      .then((entries) => dispatch(receiveEntries(entries)))
       .then(({entries}) => {
         // If the entries do not have an entry for today, add dailyReminder
         if (!entries[timeToString()]) {
