@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import {addEntry} from "../actions/index";
 import {getDailyReminderValue} from "../utils/helpers";
 import {purple, white} from "../utils/colors";
+import {NavigationActions} from 'react-navigation'
 
 function SubmitBtn({onPress}) {
   return (
@@ -81,8 +82,7 @@ class AddEntry extends Component {
       eat: 0
     });
 
-    // TODO Update Redux
-    // TODO Naviagte to home
+    this.toHome();
     submitEntry(entry, key);
     // TODO Clear local information
   };
@@ -100,10 +100,16 @@ class AddEntry extends Component {
       sleep: 0,
       eat: 0
     });
-    // TODO Update Redux
-    // TODO Naviagte to home
+
+    this.toHome();
     removeEntry(key); // from api.js
   };
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({
+      key: 'AddEntry'
+    }))
+  }
 
   render() {
     const metaInfo = getMetricsMetaInfo();
