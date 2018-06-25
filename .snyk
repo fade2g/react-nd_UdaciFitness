@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -24,3 +24,6 @@ patch:
         patched: '2017-09-27T00:54:11.927Z'
     - react-native > connect > method-override > debug:
         patched: '2017-09-27T00:54:11.927Z'
+  'npm:mime:20170907':
+    - react-native > connect > serve-static > send > mime:
+        patched: '2018-06-25T23:31:19.970Z'
