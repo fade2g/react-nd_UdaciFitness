@@ -15,7 +15,8 @@
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-expo"
@@ -28,7 +29,7 @@
     "react-navigation": "^1.0.0-beta.13",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "snyk": "^1.41.1",
+    "snyk": "^1.88.0",
     "udacifitness-calendar": "^11.0.0"
   },
   "snyk": true
